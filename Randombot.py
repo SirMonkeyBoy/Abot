@@ -18,6 +18,8 @@ async def on_member_join(member):
     if channel is not None:
         welcome_message = f'Welcome {member.mention} to the Robbery! Do not forget to get your roles from <#channel id>.'
         await channel.send(welcome_message)
+        await sleep(0.4)
+        await channel.send('also remember to invite all your friends.')
 
 
 @bot.command(name='next_robbery')
