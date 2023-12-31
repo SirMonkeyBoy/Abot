@@ -1,11 +1,11 @@
-FROM python:3.9.18-alpine3.18
+FROM node:alpine
 
-ADD Randombot.py .
-ADD requirements.txt .
+WORKDIR /usr/src/app
 
-RUN pip install -r requirements.txt
+COPY package*.json ./
 
-ENV BOTTOKEN ""
-ENV ROBBERYDATE ""
+RUN npm install
 
-CMD ["python", "./Randombot.py"]
+COPY . .
+
+CMD [ "node", "./src/index.js" ]
