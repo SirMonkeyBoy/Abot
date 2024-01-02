@@ -1,10 +1,10 @@
 require('dotenv').config();
 const { token } = process.env;
 const {Client, IntentsBitField, ActivityType, Collection } = require('discord.js');
+const { CommandKit } = require('commandkit');
 const fs = require('fs');
 
 const welcome = require('./welcome.js');
-const register = require('./register-commands.js')
 
 const client = new Client({
     intents: [
@@ -15,23 +15,22 @@ const client = new Client({
     ],
 });
 
+new CommandKit({
+    client,
+    eventsPath: `${__dirname}/events`,
+    commandsPath: `${__dirname}/commands`,
+    bulkRegister: true,
+});
+
 client.on('ready', (c) => {
     console.log(`${c.user.username} is online`)
 
     welcome(client)
 
     client.user.setActivity({
-        name: 'Robbery | v2.1',
+        name: 'Robbery | v2.3',
         type: ActivityType.Playing,
     });
 });
 
-client.on('interactionCreate', (interaction) => {
-    if (!interaction.isChatInputCommand()) return;
-  
-    if (interaction.commandName === 'nextrobbery') {
-      return interaction.reply('Check events for the next robbery');
-    }
-  
-  });
 client.login(token);
