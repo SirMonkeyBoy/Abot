@@ -28,7 +28,7 @@ client.on('ready', (c) => {
     welcome(client)
 
     client.user.setActivity({
-        name: 'Robbery | v2.3',
+        name: 'Robbery | v2.3.1',
         type: ActivityType.Playing,
     });
 });
