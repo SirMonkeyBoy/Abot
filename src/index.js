@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { token } = process.env;
+const { token, targetChannelId } = process.env;
 const {Client, IntentsBitField, ActivityType, Collection } = require('discord.js');
 const { CommandKit } = require('commandkit');
 const fs = require('fs');
@@ -28,7 +28,7 @@ client.on('ready', (c) => {
     welcome(client)
 
     client.user.setActivity({
-        name: 'Robbery | v2.3.1',
+        name: `Robbery | v2.4.3`,
         type: ActivityType.Playing,
     });
 });
